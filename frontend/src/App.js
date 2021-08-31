@@ -13,12 +13,11 @@ const useStyles = makeStyles({
 });
 
 
-
 function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: purple[500],
+        main: '#17809F',
       },
       secondary: {
         main: green[500],

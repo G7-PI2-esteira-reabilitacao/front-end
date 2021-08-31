@@ -36,7 +36,7 @@ function SideBar() {
         <Drawer
           className={classes.drawer}
           variant="persistent"
-          open={true}
+          open={false}
           classes={{
             paper: classes.drawerPaper,
           }}
@@ -44,7 +44,7 @@ function SideBar() {
           <Toolbar />
           <div className={classes.drawerContainer}>
             <List>
-              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              {['Início', 'Pacientes', 'Novo Cadastro' ].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
@@ -53,7 +53,7 @@ function SideBar() {
             </List>
             <Divider />
             <List>
-              {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              {['Relatório de Desempenho'].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                   <ListItemText primary={text} />

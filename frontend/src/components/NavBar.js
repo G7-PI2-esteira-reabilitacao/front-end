@@ -53,14 +53,14 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-          nome1
+          FisioGama
           </Typography>
-          <Typography variant="h6" className={classes.title}>
+          {/* <Typography variant="h6" className={classes.title}>
           nome2
           </Typography>
           <Typography variant="h6" className={classes.title}>
           nome3
-          </Typography>
+          </Typography> */}
           <div className={classes.grow}/>
           {auth ? (
             <div>
