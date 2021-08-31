@@ -2,6 +2,7 @@ import { AppBar, Button, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typogr
 import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import logo from '../assets/logo-fisio-gama-cinza.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,17 +16,21 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   title: {
-    marginLeft: theme.spacing(6),
+    marginLeft: theme.spacing(2),
   },
   grow: {
     flexGrow: 1,
+  },
+  image: {
+    width: '4%',
   }
 }));
 
-function NavBar() {
+function NavBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  
   const open = Boolean(anchorEl);
 
   const handleChange = () => {
@@ -45,13 +50,23 @@ function NavBar() {
     handleClose();
   }
 
+  const handleSide = () => {
+    props.setSide(!props.side);
+  }
+
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="start" onClick={handleSide} className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
+          <img
+          className={classes.image}
+          alt={"logo"}
+          src={logo}
+        />
           <Typography variant="h6" className={classes.title}>
           FisioGama
           </Typography>

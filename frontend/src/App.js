@@ -1,10 +1,10 @@
 import React from "react";
-import { ThemeProvider} from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core";
 import { createTheme, makeStyles } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
 import Main from "./pages/Main.js";
 import BaseLayout from "./layouts/BaseLayout.js";
+import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
+import Registration from "./pages/Registration.js";
 
 const useStyles = makeStyles({
   root: {
@@ -20,16 +20,28 @@ function App() {
         main: '#17809F',
       },
       secondary: {
-        main: green[500],
+        main: '#3f51b5',
       },
+      background: {
+        paper: 'C4C4C4',
+      }
     },
   });
-  
+
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <BaseLayout/>
-      <Main />
+      <Router>
+        <BaseLayout />
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/regist">
+            <Registration />
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }

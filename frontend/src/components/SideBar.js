@@ -9,6 +9,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import { Link } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -28,40 +29,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SideBar() {
-    const classes = useStyles();
+function SideBar(props) {
+  const classes = useStyles();
 
-    return (
-      <div className={classes.root}>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          open={false}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <Toolbar />
-          <div className={classes.drawerContainer}>
-            <List>
-              {['Início', 'Pacientes', 'Novo Cadastro' ].map((text, index) => (
+
+  const resolveLink = (texto) => {
+    switch (texto) {
+      case 'Pacientes':
+        return '/'
+      case 'Novo Cadastro':
+        return '/regist'
+      case 'Relatório de Desempenho':
+        return '/'
+      default:
+        return '/';
+    }
+  }
+
+
+  return (
+    <div className={classes.root}>
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        open={props.side}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <Toolbar />
+        <div className={classes.drawerContainer}>
+          <List>
+
+            {['Início', 'Pacientes', 'Novo Cadastro'].map((text, index) => (
+              <Link underline='none' href={resolveLink(text)} className={classes.link} >
+                <ListItem button key={text}>
+
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['Relatório de Desempenho'].map((text, index) => (
+              <Link underline='none' href="/" className={classes.link} >
+
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <List>
-              {['Relatório de Desempenho'].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
-          </div>
-        </Drawer>
+              </Link>
+            ))}
+          </List>
+        </div>
+      </Drawer>
     </div>
   );
 }

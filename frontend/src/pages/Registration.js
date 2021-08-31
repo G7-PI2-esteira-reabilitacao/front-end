@@ -1,5 +1,4 @@
-import { makeStyles, Toolbar, Container, Button, ThemeProvider } from '@material-ui/core';
-import { createTheme } from '@material-ui/core/styles';
+import { makeStyles, Toolbar, Container, Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import clsx from 'clsx';
@@ -39,19 +38,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Main() {
+function Registration() {
   const classes = useStyles();
 
-  const theme = createTheme ({
-    palette: {
-      primary: {
-        main: '#17809F',
-      },
-      secondary: {
-        main: '#C4C4C4',
-      }
-    }
-  })
+
 
   const [value, setValue] = React.useState('female');
 
@@ -235,7 +225,6 @@ function Main() {
           </Container>
         </div>
       </form>
-      <ThemeProvider theme={theme}>
         <Container className={classes.root} maxWidth="md">
           <Button className={classes.button} variant="contained" color="secondary" size="small">
             CANCELAR
@@ -244,9 +233,8 @@ function Main() {
             CADASTRAR
           </Button>
         </Container>
-      </ThemeProvider>
     </div>
   );
 }
 
-export default Main;
+export default Registration;

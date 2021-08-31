@@ -1,75 +1,64 @@
-import { makeStyles, Toolbar } from '@material-ui/core';
-import { Button, ThemeProvider, Container } from '@material-ui/core';
-import { createTheme } from '@material-ui/core/styles';
+import { Grid, makeStyles, Toolbar } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import React from 'react';
-
+import logo from '../assets/logo-fisio-gama.png';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     alignItems: 'center',
     height: '100hv'
   },
-  image:{
-    height: 140,
+  image: {
+    width: '40%',
     display: 'block',
-    marginTop: '50px',
-    marginLeft: '430px',
-    marginRight: 'auto'
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   button: {
-    width: theme.spacing(50), 
-    align: 'center',
-    marginLeft: '35px'
+    width: theme.spacing(50),
+    marginLeft: theme.spacing(2),
+    
   }
 }));
 
 function Main() {
   const classes = useStyles();
 
-  const theme = createTheme ({
-    palette: {
-      primary: {
-        main: '#17809F',
-      },
-      secondary: {
-        main: '#3f51b5',
-      }
-    }
-  })
-
   return (
     <div className={classes.root}>
       <Container maxWidth="md">
-        <Toolbar/>
-        {/* <CardMedia
-          className={classes.media}
-          image="/assets/logo-fisio-gama.png"
-          title="Contemplative Reptile"
-        /> */}
-        <img 
+        <Toolbar />
+        <img
           className={classes.image}
-          alt="logo" 
-          src="./assets/logo-fisio-gama.png"
+          alt={"logo"}
+          src={logo}
         />
       </Container>
-      <Container maxWidth="md">     
-      <Toolbar/>
-      <ThemeProvider theme={theme}>
-        <Button className={classes.button} variant="contained" color="primary" size="large">
-          INICIAR SESSÃO
-        </Button>
-        <Button className={classes.button} variant="contained" color="primary" size="large">
-          LISTA DE PACIENTES
-        </Button>
-        <Toolbar/>
-        <Button className={classes.button} variant="contained" color="primary" size="large">
-          RELATÓRIO DE DESEMPENHO
-        </Button>
-        <Button className={classes.button} variant="contained" color="primary" size="large">
-          CADASTRAR NOVO PACIENTE
-        </Button>
-      </ThemeProvider>
-      </Container> 
+      <Container maxWidth="md">
+        <Grid spacing={4} container>
+          <Grid item lg={6} md={6}  >
+            <Button className={classes.button} variant="contained" color="primary" size="large">
+              INICIAR SESSÃO
+            </Button>
+          </Grid>
+          <Grid item lg={6} md={6}  >
+            <Button className={classes.button} variant="contained" color="primary" size="large">
+              LISTA DE PACIENTES
+            </Button>
+          </Grid>
+          <Grid item lg={6} md={6}  >
+            <Button className={classes.button} variant="contained" color="primary" size="large">
+              RELATÓRIO DE DESEMPENHO
+            </Button>
+          </Grid>
+          <Grid item lg={6} md={6}  >
+            <Button className={classes.button} variant="contained" color="primary" size="large">
+              CADASTRAR NOVO PACIENTE
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+
     </div>
   );
 }
