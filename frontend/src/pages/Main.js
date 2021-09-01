@@ -2,6 +2,7 @@ import { Grid, makeStyles, Toolbar } from '@material-ui/core';
 import { Button, Container } from '@material-ui/core';
 import React from 'react';
 import logo from '../assets/logo-fisio-gama.png';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -11,13 +12,13 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: '40%',
     display: 'block',
+    marginTop: '35px',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
   button: {
     width: theme.spacing(50),
     marginLeft: theme.spacing(2),
-    
   }
 }));
 

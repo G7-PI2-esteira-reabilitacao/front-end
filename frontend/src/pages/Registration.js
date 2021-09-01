@@ -10,7 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
-   root: {
+  root: {
     width: '100%',
     marginBottom: '30px',
     alignItems: 'center',
@@ -20,13 +20,11 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
-  },
-  textField: {
-    width: '25ch',
+  margin: {
+    margin: theme.spacing(2),
   },
   title:{
+    marginTop: '35px',
     textAlign: 'center',
     color: '#fff',
     background: '#17809F'    
@@ -34,205 +32,244 @@ const useStyles = makeStyles((theme) => ({
   button: {
     width: theme.spacing(20), 
     align: 'right',
+    marginTop: '30px',
     marginRight: '20px',
-  }
+    position: 'relative',
+    right: '0'
+
+  },
 }));
 
 function Registration() {
   const classes = useStyles();
 
-
-
-  const [value, setValue] = React.useState('female');
+  const [value, setSelectedValue] = React.useState('female');
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setSelectedValue(event.target.value);
   };
-
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
         <Toolbar/>
-        <div className={classes.root}>
+        <div>
           <Container maxWidth="md">
-          <h1 className={classes.title}>DADOS DO PACIENTE</h1>
-          <div>
-          <TextField
-            id="filled-full-width"
-            label="Nome"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Data Nascimento"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Cartão de Saúde"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-        </div>
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="RG"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="CPF"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Telefone"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <FormControl component="fieldset">
-            <FormLabel component="legend">Genero</FormLabel>
-              <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                <FormControlLabel value="female" control={<Radio />} label="Feminino" />
-                <FormControlLabel value="male" control={<Radio />} label="Masculino" />
-                <FormControlLabel value="other" control={<Radio />} label="Outro" />
-              </RadioGroup>
-          </FormControl>
-        </div>
-        <div>
-          <TextField 
-            id="filled-full-width"
-            label="Nome da mãe"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Nome do pai"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-        </div>
-        <h1 className={classes.title}>DADOS FÍSICOS</h1>
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="Prontuário"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            label="Altura"
-            id="filled-end-adornment"
-            className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">m</InputAdornment>,
-            }}
-            variant="filled"
-          />
-          <TextField
-            label="Peso"
-            id="filled-start-adornment"
-            className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-            }}
-            variant="filled"
-          />
-        </div>
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="Grau de dificuldade"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Sessão"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Evolução"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-        </div>
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="Desempenho"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            id="filled-full-width"
-            label="Limitações"
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-        </div>
-
+            <h1 className={classes.title} fontFamyli="">DADOS PESSOAIS</h1>
+            <div>
+              {/* <InputLabel htmlFor="standard-adornment">Nome</InputLabel> */}
+              <TextField
+                required
+                id="name"
+                label="Nome"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="date"
+                label="Data Nascimento"
+                type="date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                id="filled-full-width"
+                label="Cartão de Saúde"
+                type="number"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                id="filled-required"
+                label="RG"
+                type="number"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="CPF"
+                type="number"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                id="filled-full-width"
+                label="Telefone"
+                type="number"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <FormControl component="fieldset" className={classes.margin}>
+                <FormLabel component="legend" size="small">Genero</FormLabel>
+                  <RadioGroup row label="gender" name="gender" value={value} onChange={handleChange}>
+                    <FormControlLabel value="female" control={<Radio color="primary" size="small"/>} label="F" />
+                    <FormControlLabel value="male" control={<Radio color="primary" size="small"/>} label="M"/>
+                    <FormControlLabel value="other" control={<Radio color="primary" size="small"/>} label="Outro" />
+                  </RadioGroup>
+              </FormControl>
+            </div>
+            <div>
+              <TextField 
+                id="filled-full-width"
+                label="Nome da mãe"
+                margin="normal"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+              <TextField
+                id="filled-full-width"
+                label="Nome do pai"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+            </div>
+            <h1 className={classes.title}>DADOS FÍSICOS</h1>
+            <div>
+              <TextField
+                required
+                id="filled-required"
+                label="Prontuário"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Altura"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">m</InputAdornment>,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Peso"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                id="filled-required"
+                label="Grau de dificuldade"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Sessão"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '23%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Evolução"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+            </div>
+            <div>
+                <TextField                  
+                  required
+                  id="filled-required"
+                  label="Desempenho"
+                  type="text"
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  style ={{width: '48%'}}
+                  variant="filled"
+                />
+                <TextField
+                  id="filled-full-width"
+                  label="Limitações"
+                  type="text"
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  style ={{width: '48%'}}
+                  variant="filled"
+                />
+            </div>
           </Container>
         </div>
       </form>
-        <Container className={classes.root} maxWidth="md">
-          <Button className={classes.button} variant="contained" color="secondary" size="small">
-            CANCELAR
-          </Button>
-          <Button className={classes.button} variant="contained" color="primary" size="small">
-            CADASTRAR
-          </Button>
-        </Container>
+      <Container className={clsx(classes.root, classes.position)} maxWidth="md">
+        <Button className={classes.button} variant="contained" color="secondary" size="small">
+          CANCELAR
+        </Button>
+        <Button className={classes.button} variant="contained" color="primary" size="small">
+          CADASTRAR
+        </Button>
+      </Container>
     </div>
   );
 }

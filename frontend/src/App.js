@@ -20,15 +20,19 @@ function App() {
         main: '#17809F',
       },
       secondary: {
-        main: '#3f51b5',
+        main: '#c4c4c4',
       },
       background: {
         paper: 'C4C4C4',
       }
     },
+    typography: {
+      fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
+    },
   });
 
   const classes = useStyles();
+  
   return (
     <ThemeProvider theme={theme}>
       <Router>

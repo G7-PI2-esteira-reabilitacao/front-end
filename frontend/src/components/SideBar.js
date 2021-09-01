@@ -7,8 +7,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp'; 
 import { Link } from '@material-ui/core';
 
 const drawerWidth = 240;
@@ -64,8 +66,7 @@ function SideBar(props) {
             {['Início', 'Pacientes', 'Novo Cadastro'].map((text, index) => (
               <Link underline='none' href={resolveLink(text)} className={classes.link} >
                 <ListItem button key={text}>
-
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <PeopleIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>
               </Link>
@@ -77,7 +78,7 @@ function SideBar(props) {
               <Link underline='none' href="/" className={classes.link} >
 
                 <ListItem button key={text}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemIcon>{index % 2 === 0 ? <TrendingUpIcon /> : <HomeIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>
               </Link>
