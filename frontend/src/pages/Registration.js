@@ -197,48 +197,10 @@ function Registration() {
               />
             </div>
             <div>
-              <TextField
-                required
-                id="filled-required"
-                label="Grau de dificuldade"
-                type="text"
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '23%'}}
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Sessão"
-                type="text"
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '23%'}}
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Evolução"
-                type="text"
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '48%'}}
-                variant="filled"
-              />
-            </div>
-            <div>
                 <TextField                  
                   required
                   id="filled-required"
-                  label="Desempenho"
+                  label="Grau de dificuldade"
                   type="text"
                   margin="normal"
                   InputLabelProps={{

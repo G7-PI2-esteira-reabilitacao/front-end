@@ -5,6 +5,7 @@ import Main from "./pages/Main.js";
 import BaseLayout from "./layouts/BaseLayout.js";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import Registration from "./pages/Registration.js";
+import SessionInfo from "./pages/SessionInfo";
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/regist">
             <Registration />
+          </Route>
+          <Route path="/session">
+            <SessionInfo />
           </Route>
         </Switch>
       </Router>
