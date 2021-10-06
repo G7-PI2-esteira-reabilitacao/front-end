@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@material-ui/core";
 import { createTheme, makeStyles } from '@material-ui/core/styles';
 import Main from "./pages/Main.js";
 import BaseLayout from "./layouts/BaseLayout.js";
