@@ -3,11 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import clsx from 'clsx';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,11 +38,6 @@ const useStyles = makeStyles((theme) => ({
 function SessionInfo() {
   const classes = useStyles();
 
-  const [value, setSelectedValue] = React.useState('female');
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
@@ -149,8 +139,13 @@ function SessionInfo() {
         </div>
       </form>
       <Container className={clsx(classes.root, classes.position)} maxWidth="md">
-        <Button className={classes.button} variant="contained" color="secondary" size="small">
-          CANCELAR
+        <Button className={classes.button} 
+          href="home" 
+          variant="contained" 
+          color="secondary" 
+          size="small"
+          >
+            CANCELAR
         </Button>
         <Button className={classes.button} variant="contained" color="primary" size="small">
           CADASTRAR

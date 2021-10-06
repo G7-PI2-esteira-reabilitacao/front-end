@@ -48,12 +48,20 @@ function Main() {
             </Button>
           </Grid>
           <Grid item lg={6} md={6}  >
-            <Button className={classes.button} variant="contained" color="primary" size="large">
+            <Button className={classes.button} 
+              href="dashboard" 
+              variant="contained" 
+              color="primary" 
+              size="large">
               RELATÓRIO DE DESEMPENHO
             </Button>
           </Grid>
           <Grid item lg={6} md={6}  >
-            <Button className={classes.button} variant="contained" color="primary" size="large">
+            <Button className={classes.button} 
+              href="regist" 
+              variant="contained" 
+              color="primary" 
+              size="large">
               CADASTRAR NOVO PACIENTE
             </Button>
           </Grid>

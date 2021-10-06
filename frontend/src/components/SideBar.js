@@ -7,7 +7,6 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import PostAddIcon from '@material-ui/icons/PostAdd';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp'; 
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 function SideBar(props) {
   const classes = useStyles();
 
-
   const resolveLink = (texto) => {
     switch (texto) {
       case 'Pacientes':
@@ -47,7 +45,6 @@ function SideBar(props) {
         return '/';
     }
   }
-
 
   return (
     <div className={classes.root}>
@@ -62,7 +59,6 @@ function SideBar(props) {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-
             {['Início', 'Pacientes', 'Novo Cadastro'].map((text, index) => (
               <Link underline='none' href={resolveLink(text)} className={classes.link} >
                 <ListItem button key={text}>
@@ -75,8 +71,7 @@ function SideBar(props) {
           <Divider />
           <List>
             {['Relatório de Desempenho'].map((text, index) => (
-              <Link underline='none' href="/" className={classes.link} >
-
+              <Link underline='none' href="/dashboard" className={classes.link} >
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <TrendingUpIcon /> : <HomeIcon />}</ListItemIcon>
                   <ListItemText primary={text} />

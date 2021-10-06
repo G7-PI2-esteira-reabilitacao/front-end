@@ -1,11 +1,14 @@
 import React from "react";
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@mui/material/styles";
 import { createTheme, makeStyles } from '@material-ui/core/styles';
 import Main from "./pages/Main.js";
 import BaseLayout from "./layouts/BaseLayout.js";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import Registration from "./pages/Registration.js";
 import SessionInfo from "./pages/SessionInfo";
+import SessionData from "./pages/SessionData";
+import PatientsList from "./pages/PatientsList";
+
 
 const useStyles = makeStyles({
   root: {
@@ -39,14 +42,20 @@ function App() {
       <Router>
         <BaseLayout />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/home">
             <Main />
           </Route>
-          <Route path="/regist">
+          <Route path="/registration">
             <Registration />
           </Route>
           <Route path="/session">
             <SessionInfo />
+          </Route>
+          <Route path="/sessiondata">
+            <SessionData />
+          </Route>
+          <Route path="/patients">
+            <PatientsList />
           </Route>
         </Switch>
       </Router>
