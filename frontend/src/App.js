@@ -42,7 +42,7 @@ function App() {
       <Router>
         <BaseLayout />
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Main />
           </Route>
           <Route path="/registration">

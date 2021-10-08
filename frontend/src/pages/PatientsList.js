@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React, { useEffect, useState } from 'react';
+import { makeStyles,withStyles, Toolbar, Container, Button} from '@material-ui/core';
+import { Select, Input,  MenuItem, FormControl} from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +31,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     background: '#17809F'    
   },
+  cardbox:{
+    marginTop: '20px'  
+  },
+  titlebox:{
+    color: '#fff',
+    background: '#17809F'    
+  },
   button: {
     width: theme.spacing(20), 
     align: 'right',
@@ -36,87 +47,150 @@ const useStyles = makeStyles((theme) => ({
     right: '0'
 
   },
+  table: {
+    minWidth: 700,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 700,
+  },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: '#17809F',
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
     },
   },
-};
+}))(TableRow);
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
+function createData(name,  session, prontuary, age) {
+  return { name, session, prontuary, age };
 }
 
-function PatientList() {
+const rows = [
+  createData('Antonio Marcos Silva', 3, 'Fisioterapia', 42),
+  createData('Barbara Ferreira Costa', 1, 'Parkinson', 29),
+  createData('José Luís Pereira', 1, 'Recuperação', 57),
+  createData('Manoel Cardoso', 4, 'Fisioterapia', 54),
+  createData('Paula Matos Guimarães', 2, 'Fisioterapia', 47),
+];
+
+function SessionData(props) {
   const classes = useStyles();
 
   const [value, setSelectedValue] = React.useState('female');
+/* 
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  }; */
 
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [elements, setElements] = useState([]);
+
+  useEffect(()=>{
+    if(props.elements) setElements(props.elements)
+  }, [props.elements])
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a the stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    props.change(event.target.value);
   };
 
   return (
     <div>
-      <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Name</InputLabel>
-        <Select
-          labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+      <form className={classes.root} noValidate autoComplete="off">
+        <Toolbar/>
+        <div>
+          <Container maxWidth="md">
+            <h1 className={classes.title} fontFamyli="">LISTA DE PACIENTES</h1>
+            {/* <div>
+              <TextField 
+                required
+                id="filled-full-width"
+                label="Data"
+                margin="normal"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+              <TextField
+                id="filled-full-width"
+                label="Procedimento"
+                type="text"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                style ={{width: '48%'}}
+                variant="filled"
+              />
+            </div> */}
+            <div className={classes.root}>
+              <FormControl className={classes.formControl}>
+                <Select
+                  value={props.value}
+                  onChange={handleChange}
+                  input={<Input />}
+                >
+                  {elements.map((name, index) => (
+                    <MenuItem key={index} value={name} >
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+            <div>
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="customized table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Nome</StyledTableCell>
+                    <StyledTableCell align="right">Sessão</StyledTableCell>
+                    <StyledTableCell align="right">Prontuário</StyledTableCell>
+                    <StyledTableCell align="right">Idade</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <StyledTableRow key={row.name}>
+                      <StyledTableCell component="th" scope="row">
+                        {row.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">{row.session}</StyledTableCell>
+                      <StyledTableCell align="right">{row.prontuary}</StyledTableCell>
+                      <StyledTableCell align="right">{row.age}</StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            </div>
+          </Container>          
+        </div>
+      </form>
+      <Container className={clsx(classes.root, classes.position)} maxWidth="md">
+        {/* <Button className={classes.button} variant="contained" color="secondary" size="small">
+          CANCELAR
+        </Button> */}
+        <Button className={classes.button} variant="contained" color="primary" size="small" href="/">
+          VOLTAR
+        </Button>
+      </Container>
     </div>
   );
 }
 
-export default PatientList;
+export default SessionData;                                                           

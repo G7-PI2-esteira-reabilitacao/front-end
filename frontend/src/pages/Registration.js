@@ -8,6 +8,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,12 +34,22 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: theme.spacing(20), 
-    align: 'right',
     marginTop: '30px',
     marginRight: '20px',
     position: 'relative',
     right: '0'
 
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: '#fff',
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
   },
 }));
 
@@ -48,6 +61,17 @@ function Registration() {
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
@@ -225,12 +249,41 @@ function Registration() {
         </div>
       </form>
       <Container className={clsx(classes.root, classes.position)} maxWidth="md">
-        <Button className={classes.button} variant="contained" color="secondary" size="small">
+        <Button className={classes.button} variant="contained" color="secondary" size="small" href="/">
           CANCELAR
         </Button>
-        <Button className={classes.button} variant="contained" color="primary" size="small">
+        <Button className={classes.button} 
+          variant="contained" 
+          type="button" 
+          color="primary" 
+          size="small" 
+          onClick={handleOpen}>
           CADASTRAR
         </Button>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <h2 id="transition-modal-title">USUÁRIO CADASTRADO COM SUCESSO!</h2>
+              <Button className={classes.button} variant="contained" color="primary" size="small" href="/">
+                INÍCIO
+              </Button>
+              <Button className={classes.button} variant="contained" color="primary" size="small" href="patients">
+                LISTA DE PACIENTES
+              </Button>
+            </div>
+          </Fade>
+        </Modal>
       </Container>
     </div>
   );

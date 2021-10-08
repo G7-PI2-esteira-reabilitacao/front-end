@@ -1,8 +1,12 @@
-import { makeStyles, Toolbar, Container, Button, Card } from '@material-ui/core';
-import { CardContent, Typography, Box, Grid} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
 import React from 'react';
+import { makeStyles, Toolbar, Container, Button, Card } from '@material-ui/core';
+import { CardContent, CardActions, Typography, Box, Grid} from '@material-ui/core';
 import clsx from 'clsx';
+import saturacao from '../assets/icon-saturacao.svg';
+import pressao from '../assets/icon-pressao2.png';
+import frequencia from '../assets/icon-frequencia2.png';
+import relogio from '../assets/relogio.jpg';
+import cadencia from '../assets/icon-cadencia.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
   margin: {
     margin: theme.spacing(2),
+  },
+  image: {
+    width: '30%',
+    display: 'block',
+    margin: 'auto',
+  },
+  imagesecondary: {
+    width: '20%',
+    display: 'block',
+    margin: '15px',
   },
   title:{
     marginTop: '35px',
@@ -46,56 +60,24 @@ const useStyles = makeStyles((theme) => ({
 function SessionData() {
   const classes = useStyles();
 
-  const [value, setSelectedValue] = React.useState('female');
+  /* const [value, setSelectedValue] = React.useState('female'); */
 
-  const handleChange = (event) => {
+  /* const handleChange = (event) => {
     setSelectedValue(event.target.value);
-  };
+  }; */
+
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
         <Toolbar/>
         <div>
-          <h2 className={classes.title} fontFamyli="">SESSÃO: 4</h2>
           <Container maxWidth="md">
+            <h2 className={classes.title} fontFamyli="">SESSÃO: 4</h2>
             <div>
-              {/* <InputLabel htmlFor="standard-adornment">Nome</InputLabel> */}
-              <TextField
-                required
-                id="name"
-                label="Dados Sessão"
-                type="text"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '98%'}}
-                variant="filled"
-              />
-            </div>
-            <div>
-              <TextField 
-                required
-                id="filled-full-width"
-                label="Data"
-                margin="normal"
-                type="text"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '48%'}}
-                variant="filled"
-              />
-              <TextField
-                id="filled-full-width"
-                label="Procedimento"
-                type="text"
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                style ={{width: '48%'}}
-                variant="filled"
-              />
+            <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+              Dados do desempenho de nome da sessao x:
+            </Typography>
+
             </div>
           </Container>
           <div>
@@ -108,6 +90,12 @@ function SessionData() {
                       <Typography className={classes.titlebox} align="center" gutterBottom>
                         SATURAÇÃO
                       </Typography>
+                      <img
+                        className={classes.image}
+                        alt={"saturacao"}
+                        src={saturacao}
+                        align="left"
+                      />
                       <Typography variant="h4" component="div" align="right">
                         98
                       </Typography>
@@ -126,6 +114,12 @@ function SessionData() {
                       <Typography className={classes.titlebox} align="center" gutterBottom>
                         FREQUENCIA CARDÍACA
                       </Typography>
+                      <img
+                        className={classes.imagesecondary}
+                        alt={"frequencia"}
+                        src={frequencia}
+                        align="left"
+                      />
                       <Typography variant="h4" component="div" align="right">
                         79 
                       </Typography>
@@ -144,6 +138,12 @@ function SessionData() {
                       <Typography className={classes.titlebox} align="center" gutterBottom>
                         TEMPO DE SESSÃO
                       </Typography>
+                      <img
+                        className={classes.image}
+                        alt={"tempo"}
+                        src={relogio}
+                        align="left"
+                      />
                       <Typography variant="h4" component="div" align="right">
                         00:19:35
                       </Typography>
@@ -162,6 +162,12 @@ function SessionData() {
                       <Typography className={classes.titlebox} align="center" gutterBottom>
                         PRESSÃO ARTERIAL
                       </Typography>
+                      <img
+                        className={classes.imagesecondary}
+                        alt={"pressao"}
+                        src={pressao}
+                        align="left"
+                      />
                       <Typography variant="h4" component="div" align="right">
                         12/8
                       </Typography>
@@ -180,6 +186,12 @@ function SessionData() {
                       <Typography className={classes.titlebox} align="center" gutterBottom>
                         CADÊNCIA
                       </Typography>
+                      <img
+                        className={classes.imagesecondary}
+                        alt={"cadencia"}
+                        src={cadencia}
+                        align="left"
+                      />
                       <Typography variant="h4" component="div" align="right">
                         130
                       </Typography>
@@ -196,17 +208,17 @@ function SessionData() {
                   <Card>
                     <CardContent>
                       <Typography className={classes.titlebox} align="center" gutterBottom>
-                        PONTUAÇÃO
+                        VELOCIDADE MÉDIA
                       </Typography>
                       <Typography variant="h4" component="div" align="right">
-                        98
+                        1
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
-                        bpm
+                        m/s
                       </Typography>
                     </CardContent>
                     {/* <CardActions>
-                      <Button size="small">Learn More</Button>
+                      <Button size="small">Números anteriores</Button>
                     </CardActions> */}
                   </Card>
                 </Grid>
@@ -217,10 +229,7 @@ function SessionData() {
         </div>
       </form>
       <Container className={clsx(classes.root, classes.position)} maxWidth="md">
-        {/* <Button className={classes.button} variant="contained" color="secondary" size="small">
-          CANCELAR
-        </Button> */}
-        <Button className={classes.button} variant="contained" color="primary" size="small">
+        <Button className={classes.button} variant="contained" color="primary" size="small" href="/patients">
           VOLTAR
         </Button>
       </Container>
