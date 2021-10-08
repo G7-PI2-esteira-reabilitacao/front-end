@@ -76,7 +76,7 @@ function NavBar(props) {
           <Typography variant="h6" className={classes.title}>
           nome3
           </Typography> */}
-          <div className={classes.grow}/>
+          {/* <div className={classes.grow}/>
           {auth ? (
             <div>
               <IconButton
@@ -110,7 +110,7 @@ function NavBar(props) {
             </div>
           ) : (
             <Button variant={'outlined'} color={'inherit'} onClick={handleChange}>Fazer Login</Button>
-          )}
+          )} */}
         </Toolbar>
       </AppBar>
     </div>

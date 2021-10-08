@@ -38,12 +38,20 @@ function Main() {
       <Container maxWidth="md">
         <Grid spacing={4} container>
           <Grid item lg={6} md={6}  >
-            <Button className={classes.button} variant="contained" color="primary" size="large">
+            <Button className={classes.button} 
+              href="session" 
+              variant="contained" 
+              color="primary" 
+              size="large">
               INICIAR SESSÃO
             </Button>
           </Grid>
           <Grid item lg={6} md={6}  >
-            <Button className={classes.button} variant="contained" color="primary" size="large">
+            <Button className={classes.button} 
+              href="patients" 
+              variant="contained" 
+              color="primary" 
+              size="large">
               LISTA DE PACIENTES
             </Button>
           </Grid>
@@ -58,7 +66,7 @@ function Main() {
           </Grid>
           <Grid item lg={6} md={6}  >
             <Button className={classes.button} 
-              href="regist" 
+              href="registration" 
               variant="contained" 
               color="primary" 
               size="large">

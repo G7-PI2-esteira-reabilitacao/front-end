@@ -36,9 +36,9 @@ function SideBar(props) {
   const resolveLink = (texto) => {
     switch (texto) {
       case 'Pacientes':
-        return '/'
+        return '/patients'
       case 'Novo Cadastro':
-        return '/regist'
+        return '/registration'
       case 'Relatório de Desempenho':
         return '/aftersession'
       default:
