@@ -1,77 +1,69 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Box, makeStyles } from '@material-ui/core';
-import React from 'react';
-import { BarChart, Bar, ResponsiveContainer } from 'recharts';
+import { Box, makeStyles} from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  image: {
-    width: '4%',
-  }
+   },
+   box: {
+    width: theme.spacing(4),
+    height: theme.spacing(20),
+    border: '3px solid black',
+    borderRadius: '4px',
+    backgroundColor: 'orange',
+    display: 'flex',
+    flexDirection: 'column-reverse'
+   },
+   bar: {
+    width: '105%',
+    marginBottom: '-1px'
+   },
 }));
 
-function barGraph(props) {
+const data = 4;
+
+function BarGraph(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [barColor, setBarColor] = useState('green');
+  const [lim, setLim] = useState(props.lim);
+  const [data, setData] = useState(props.data);
 
-  const open = Boolean(anchorEl);
 
-  const handleChange = () => {
-    setAuth(!auth);
-  };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  useEffect(()=>{
+    const handleColor = (params) => {
+      setData(params);
+      if(data >= lim) {
+        setBarColor('red');
+      }else {
+        setBarColor('green');
+      }
+      return
+    };
+    handleColor(props.data)}, [props.data, data, lim])
+  useEffect(()=>{setLim(props.lim)}, [props.lim])
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleCloseMenu = () => {
-    handleChange()
-    handleClose();
-  }
-
-  const handleSide = () => {
-    props.setSide(!props.side);
-  }
-
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-  ];
-  
   return (
     <div className={classes.root}>
-      <Box>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart width={150} height={40} data={data}>
-            <Bar dataKey="uv" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
+      <Box display='flex' flexDirection='reverse' className={classes.box}>
+        <Box className={classes.bar} style={{backgroundColor: barColor}} height={data}>
+
+        </Box>
       </Box>
     </div>
   );
 }
 
-export default barGraph;
+export default BarGraph;
+
+/*
+manual de instalacao
+manual de teste
+manual de usuario
+
+pode ser em formato de video
+
+no dia da feira alguem estar presente com o professor
+
+06/11 - ultima revisao 14-14:30
+*/
