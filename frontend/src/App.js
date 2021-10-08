@@ -8,6 +8,7 @@ import Registration from "./pages/Registration.js";
 import SessionInfo from "./pages/SessionInfo";
 import SessionData from "./pages/SessionData";
 import PatientsList from "./pages/PatientsList";
+import AfterSession from "./pages/AfterSession.js";
 
 
 const useStyles = makeStyles({
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route path="/patients">
             <PatientsList />
+          </Route>
+          <Route path="/aftersession">
+            <AfterSession />
           </Route>
         </Switch>
       </Router>

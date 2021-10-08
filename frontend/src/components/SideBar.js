@@ -40,7 +40,7 @@ function SideBar(props) {
       case 'Novo Cadastro':
         return '/regist'
       case 'Relatório de Desempenho':
-        return '/'
+        return '/aftersession'
       default:
         return '/';
     }
@@ -71,7 +71,7 @@ function SideBar(props) {
           <Divider />
           <List>
             {['Relatório de Desempenho'].map((text, index) => (
-              <Link underline='none' href="/dashboard" className={classes.link} >
+              <Link underline='none' href={resolveLink(text)} className={classes.link} >
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <TrendingUpIcon /> : <HomeIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
