@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import clsx from 'clsx';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,9 +148,11 @@ function SessionInfo() {
           >
             CANCELAR
         </Button>
+        <Link underline='none' href="/sessiondata" className={classes.link} >
         <Button className={classes.button} variant="contained" color="primary" size="small">
           CADASTRAR
         </Button>
+        </Link>
       </Container>
     </div>
   );

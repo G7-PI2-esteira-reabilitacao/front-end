@@ -7,6 +7,7 @@ import pressao from '../assets/icon-pressao2.png';
 import frequencia from '../assets/icon-frequencia2.png';
 import relogio from '../assets/relogio.jpg';
 import cadencia from '../assets/icon-cadencia.png';
+import BarGraph from '../components/BarGraph';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -107,6 +108,7 @@ function SessionData() {
                       <Button size="small">Learn More</Button>
                     </CardActions> */}
                   </Card>
+                  <BarGraph data={51} lim={50}/>
                 </Grid>
                 <Grid item xs={4}>
                   <Card className={classes.cardbox}>

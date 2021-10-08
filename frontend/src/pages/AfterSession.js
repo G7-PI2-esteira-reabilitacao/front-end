@@ -2,6 +2,7 @@ import { makeStyles, Toolbar, Container, Box, Card, CardContent, Typography } fr
 import React from 'react';
 import {
   LineChart,
+  Bar,
   Line,
   XAxis,
   YAxis,
@@ -9,9 +10,9 @@ import {
   Tooltip,
   Legend,
   Brush,
-  AreaChart,
-  Area,
   ResponsiveContainer,
+  Label,
+  BarChart,
 } from 'recharts';
 
 
@@ -31,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     flexDirection: 'column',
     justifyContent: 'space-around'
+  },
+  test: {
+    marginLeft: '10px',
   },
   title: {
     marginTop: theme.spacing(3),
@@ -55,45 +59,45 @@ const useStyles = makeStyles((theme) => ({
 const data = [
   {
     name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    acertos: 12,
+    cadencia: 142,
+    tempo: 102,
   },
   {
     name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    acertos: 14,
+    cadencia: 144,
+    tempo: 98,
   },
   {
     name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    acertos: 15,
+    cadencia: 150,
+    tempo: 105,
   },
   {
     name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    acertos: 13,
+    cadencia: 148,
+    tempo: 95,
   },
   {
     name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    acertos: 15,
+    cadencia: 157,
+    tempo: 100,
   },
   {
     name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    acertos: 16,
+    cadencia: 155,
+    tempo: 110,
   },
   {
     name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    acertos: 18,
+    cadencia: 160,
+    tempo: 80,
   },
 ];
 
@@ -139,10 +143,10 @@ function AfterSession() {
               <Card className={classes.cardbox}>
                 <CardContent>
                   <Typography className={classes.titlebox} align="center" gutterBottom>
-                    TEMPO DE SESSÃO
+                    FREQUÊNCIA CARDIACA
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
-                    min
+                    bpm
                   </Typography>
                 </CardContent>
               </Card>
@@ -153,7 +157,7 @@ function AfterSession() {
 
               <ResponsiveContainer width="100%" height={200}>
 
-                <LineChart
+                <BarChart
                   width={500}
                   height={200}
                   data={data}
@@ -166,16 +170,18 @@ function AfterSession() {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis />
-                  <YAxis />
+                  <XAxis >
+                  <Label value="Sessões" offset={0} position="insideBottom" />
+                  </XAxis>
+                  <YAxis label={{ value: 'acertos', angle: -90, position: 'insideLeft' }}/>
                   <Tooltip />
-                  <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-                </LineChart>
+                  <Bar maxBarSize={40} dataKey="acertos" fill="#8884d8" />
+                </BarChart>
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>
               <ResponsiveContainer width="100%" height={200}>
-                <LineChart
+                <BarChart
                   width={500}
                   height={200}
                   data={data}
@@ -188,16 +194,18 @@ function AfterSession() {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis />
-                  <YAxis />
+                  <XAxis >
+                  <Label value="Sessões" offset={0} position="insideBottom" />
+                  </XAxis>
+                  <YAxis label={{ value: 'cadência', angle: -90, position: 'insideLeft' }}/>
                   <Tooltip />
-                  <Line type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
-                </LineChart>
+                  <Bar maxBarSize={40} type="monotone" dataKey="cadencia" fill="#82ca9d" />
+                </BarChart>
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>
               <ResponsiveContainer width="100%" height={200}>
-                <AreaChart
+              <BarChart
                   width={500}
                   height={200}
                   data={data}
@@ -210,21 +218,23 @@ function AfterSession() {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis />
-                  <YAxis />
+                  <XAxis >
+                  <Label value="Sessões" offset={0} position="insideBottom" />
+                  </XAxis>
+                  <YAxis label={{ value: 'bpm', angle: -90, position: 'insideLeft' }}/>
                   <Tooltip />
-                  <Area type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
-                </AreaChart>
+                  <Bar maxBarSize={40} type="monotone" dataKey="tempo" fill="#820c00" />
+                </BarChart>
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>
               <ResponsiveContainer width="100%" height={40}>
-                <LineChart margin={{
+                <BarChart margin={{
                   right: 30,
                   left: 55,
                 }} data={data} syncId="anyId">
                   <Brush />
-                </LineChart>
+                </BarChart>
               </ResponsiveContainer>
             </Box>
           </Box>
