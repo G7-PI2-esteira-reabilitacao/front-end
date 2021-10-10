@@ -5,7 +5,7 @@ import Main from "./pages/Main.js";
 import BaseLayout from "./layouts/BaseLayout.js";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import Registration from "./pages/Registration.js";
-import SessionInfo from "./pages/SessionInfo";
+import Goniometry from "./pages/Goniometry";
 import SessionData from "./pages/SessionData";
 import PatientsList from "./pages/PatientsList";
 import AfterSession from "./pages/AfterSession.js";
@@ -25,7 +25,7 @@ function App() {
         main: '#17809F',
       },
       secondary: {
-        main: '#c4c4c4',
+        main: '#FF2400',
       },
       background: {
         paper: 'C4C4C4',
@@ -49,8 +49,8 @@ function App() {
           <Route path="/registration">
             <Registration />
           </Route>
-          <Route path="/session">
-            <SessionInfo />
+          <Route path="/goniometry">
+            <Goniometry />
           </Route>
           <Route path="/sessiondata">
             <SessionData />

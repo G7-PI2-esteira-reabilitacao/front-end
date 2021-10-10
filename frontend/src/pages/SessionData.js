@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, Toolbar, Container, Button, Card } from '@material-ui/core';
 import { CardContent, CardActions, Typography, Box, Grid} from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 import clsx from 'clsx';
 import saturacao from '../assets/icon-saturacao.svg';
 import pressao from '../assets/icon-pressao2.png';
 import frequencia from '../assets/icon-frequencia2.png';
 import relogio from '../assets/relogio.jpg';
 import cadencia from '../assets/icon-cadencia.png';
-import BarGraph from '../components/BarGraph';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,18 +49,30 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: theme.spacing(20), 
-    align: 'right',
-    marginTop: '30px',
+    marginTop: '20px',
     marginRight: '20px',
     position: 'relative',
-    right: '0'
-
+    float: 'right'
   },
 }));
 
 function SessionData() {
+  const [observacoes, setObservacoes] = useState({saturacao: false, frequencia: false, pressao: false});
   const classes = useStyles();
 
+  const preventDefault = (event) => event.preventDefault();
+
+  const handleClick = (type) =>{
+    let obj = {...observacoes};
+    if(type === 'saturacao'){
+      obj.saturacao = !obj.saturacao;
+    } else if (type === 'frequencia') {
+      obj.frequencia = !obj.frequencia;
+    } else if(type === 'pressao') {
+      obj.pressao = !obj.pressao;
+    }
+    setObservacoes(obj);
+  }
   /* const [value, setSelectedValue] = React.useState('female'); */
 
   /* const handleChange = (event) => {
@@ -74,59 +86,37 @@ function SessionData() {
         <div>
           <Container maxWidth="md">
             <h2 className={classes.title} fontFamyli="">SESSÃO: 4</h2>
-            <div>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
-              Dados do desempenho de nome da sessao x:
-            </Typography>
-
+            <div  style={{display: 'inline'}}>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary" align="left">
+                Acompanhamento dos dados de desempenho de (nome) do dia 01/02/21. 
+                Para melhor acompanhamento da análise acesse: 
+                <Link href="#" onClick={preventDefault}> 
+                  Link 
+                </Link>
+              </Typography>
             </div>
           </Container>
           <div>
             <Container maxWidth="md">
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={4}>
-                <Grid item xs={4}>
+              <Grid item xs={4}>
                   <Card className={classes.cardbox}>
                     <CardContent>
                       <Typography className={classes.titlebox} align="center" gutterBottom>
-                        SATURAÇÃO
-                      </Typography>
-                      <img
-                        className={classes.image}
-                        alt={"saturacao"}
-                        src={saturacao}
-                        align="left"
-                      />
-                      <Typography variant="h4" component="div" align="right">
-                        98
-                      </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
-                        SpO2
-                      </Typography>
-                    </CardContent>
-                    {/* <CardActions>
-                      <Button size="small">Learn More</Button>
-                    </CardActions> */}
-                  </Card>
-                  <BarGraph data={51} lim={50}/>
-                </Grid>
-                <Grid item xs={4}>
-                  <Card className={classes.cardbox}>
-                    <CardContent>
-                      <Typography className={classes.titlebox} align="center" gutterBottom>
-                        FREQUENCIA CARDÍACA
+                        CADÊNCIA
                       </Typography>
                       <img
                         className={classes.imagesecondary}
-                        alt={"frequencia"}
-                        src={frequencia}
+                        alt={"cadencia"}
+                        src={cadencia}
                         align="left"
                       />
                       <Typography variant="h4" component="div" align="right">
-                        79 
+                        130
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
-                        bpm
+                        ppm
                       </Typography>
                     </CardContent>
                     {/* <CardActions>
@@ -159,6 +149,58 @@ function SessionData() {
                   </Card>
                 </Grid>
                 <Grid item xs={4}>
+                  <Card className={classes.cardbox}>
+                    <CardContent>
+                      <Typography className={classes.titlebox} align="center" gutterBottom>
+                        VELOCIDADE MÉDIA
+                      </Typography>
+                      <Typography variant="h4" component="div" align="right">
+                        1
+                      </Typography>
+                      <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
+                        m/s
+                      </Typography>
+                    </CardContent>
+                    {/* <CardActions>
+                      <Button size="small">Números anteriores</Button>
+                    </CardActions> */}
+                  </Card>
+                </Grid>
+                <Grid item xs={4}>
+                  <Card>
+                    <CardContent>
+                      <Typography className={classes.titlebox} align="center" gutterBottom>
+                        FREQUENCIA CARDÍACA
+                      </Typography>
+                      <img
+                        className={classes.imagesecondary}
+                        alt={"frequencia"}
+                        src={frequencia}
+                        align="left"
+                      />
+                      <Typography variant="h4" component="div" align="right">
+                        79 
+                      </Typography>
+                      <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
+                        bpm
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button onClick={() => handleClick("frequencia")} size="small">Observações</Button>
+                    </CardActions>
+                    {observacoes.frequencia ? (
+                        <CardContent>
+                            <Typography >
+                            fequência limites: 50 - 120
+                            </Typography>
+                        </CardContent>
+                     ) : (
+                         <>
+                         </>
+                         )}
+                  </Card>
+                </Grid>
+                <Grid item xs={4}>
                   <Card>
                     <CardContent>
                       <Typography className={classes.titlebox} align="center" gutterBottom>
@@ -177,51 +219,56 @@ function SessionData() {
                         mm/Hg
                       </Typography>
                     </CardContent>
-                    {/* <CardActions>
-                      <Button size="small">Learn More</Button>
-                    </CardActions> */}
+                     <CardActions>
+                      <Button onClick={() => handleClick("pressao")} size="small">Observações</Button>
+                    </CardActions>
+                    {observacoes.pressao ? (
+                        <CardContent>
+                            <Typography >
+                            sistolica limites: 105 - 130
+                            </Typography>
+                            <Typography >
+                            diatolica limites: 60 - 85  
+                            </Typography>
+                        </CardContent>
+                     ) : (
+                         <>
+                         </>
+                         )} 
                   </Card>
                 </Grid>
                 <Grid item xs={4}>
                   <Card>
                     <CardContent>
                       <Typography className={classes.titlebox} align="center" gutterBottom>
-                        CADÊNCIA
+                        SATURAÇÃO
                       </Typography>
                       <img
-                        className={classes.imagesecondary}
-                        alt={"cadencia"}
-                        src={cadencia}
+                        className={classes.image}
+                        alt={"saturacao"}
+                        src={saturacao}
                         align="left"
                       />
                       <Typography variant="h4" component="div" align="right">
-                        130
+                        90
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
-                        ppm
+                        SpO2
                       </Typography>
                     </CardContent>
-                    {/* <CardActions>
-                      <Button size="small">Learn More</Button>
-                    </CardActions> */}
-                  </Card>
-                </Grid>
-                <Grid item xs={4}>
-                  <Card>
-                    <CardContent>
-                      <Typography className={classes.titlebox} align="center" gutterBottom>
-                        VELOCIDADE MÉDIA
-                      </Typography>
-                      <Typography variant="h4" component="div" align="right">
-                        1
-                      </Typography>
-                      <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
-                        m/s
-                      </Typography>
-                    </CardContent>
-                    {/* <CardActions>
-                      <Button size="small">Números anteriores</Button>
-                    </CardActions> */}
+                    <CardActions>
+                      <Button onClick={() => handleClick("saturacao")} size="small">Observações</Button>
+                    </CardActions>
+                    {observacoes.saturacao ? (
+                        <CardContent>
+                            <Typography >
+                                Limite médio: 93
+                            </Typography>
+                        </CardContent>
+                     ) : (
+                         <>
+                         </>
+                         )}
                   </Card>
                 </Grid>
               </Grid>
@@ -233,6 +280,9 @@ function SessionData() {
       <Container className={clsx(classes.root, classes.position)} maxWidth="md">
         <Button className={classes.button} variant="contained" color="primary" size="small" href="/patients">
           VOLTAR
+        </Button>        
+        <Button className={classes.button} variant="contained" color="secondary" size="small" href="/patients">
+          PAUSAR/JOGAR
         </Button>
       </Container>
     </div>

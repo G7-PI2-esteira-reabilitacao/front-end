@@ -27,16 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: theme.spacing(20), 
-    align: 'right',
-    marginTop: '30px',
     marginRight: '20px',
+    marginBottom: '30px',
     position: 'relative',
-    right: '0'
-
+    float: 'right'
   },
 }));
 
-function SessionInfo() {
+function Goniometry() {
   const classes = useStyles();
 
   return (
@@ -105,7 +103,7 @@ function SessionInfo() {
               <TextField
                 required
                 id="filled-required"
-                label="Quadril"
+                label="Flexão de quadril"
                 className={clsx(classes.margin, classes.textField)}
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
@@ -116,7 +114,7 @@ function SessionInfo() {
               <TextField
                 required
                 id="filled-required"
-                label="Joelho"
+                label="Extensão de quadril"
                 className={clsx(classes.margin, classes.textField)}
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
@@ -127,7 +125,84 @@ function SessionInfo() {
               <TextField
                 required
                 id="filled-required"
-                label="Tornozelo"
+                label="Flexão joelho esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Flexão joelho direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão joelho esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão joelho direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Flexão plantar tornozelo esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Flexão plantar tornozelo direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Dorsiflexão tornozelo esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style ={{width: '31%'}}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Dorsiflexão tornozelo direito"
                 className={clsx(classes.margin, classes.textField)}
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
@@ -136,26 +211,22 @@ function SessionInfo() {
                 variant="filled"
               />
             </div>
+              <Button className={classes.button} 
+              href="/" 
+              variant="contained" 
+              color="default" 
+              size="small"
+              >
+                CANCELAR
+            </Button>
+            <Button className={classes.button} variant="contained" color="primary" size="small" href="sessiondata">
+              INICIAR
+            </Button>
           </Container>
         </div>
       </form>
-      <Container className={clsx(classes.root, classes.position)} maxWidth="md">
-        <Button className={classes.button} 
-          href="home" 
-          variant="contained" 
-          color="secondary" 
-          size="small"
-          >
-            CANCELAR
-        </Button>
-        <Link underline='none' href="/sessiondata" className={classes.link} >
-        <Button className={classes.button} variant="contained" color="primary" size="small">
-          CADASTRAR
-        </Button>
-        </Link>
-      </Container>
     </div>
   );
 }
 
-export default SessionInfo;
+export default Goniometry;

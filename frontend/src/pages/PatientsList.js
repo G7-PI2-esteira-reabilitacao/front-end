@@ -74,19 +74,19 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name,  session, prontuary, age) {
-  return { name, session, prontuary, age };
+function createData(name,  session, age) {
+  return { name, session, age };
 }
 
 const rows = [
-  createData('Antonio Marcos Silva', 3, 'Fisioterapia', 42),
-  createData('Barbara Ferreira Costa', 1, 'Parkinson', 29),
-  createData('José Luís Pereira', 1, 'Recuperação', 57),
-  createData('Manoel Cardoso', 4, 'Fisioterapia', 54),
-  createData('Paula Matos Guimarães', 2, 'Fisioterapia', 47),
+  createData('Antonio Marcos Silva', 3, 42),
+  createData('Barbara Ferreira Costa', 1, 29),
+  createData('José Luís Pereira', 1, 57),
+  createData('Manoel Cardoso', 4, 54),
+  createData('Paula Matos Guimarães', 2, 47),
 ];
 
-function SessionData(props) {
+function PatientsList(props) {
   const classes = useStyles();
 
   const [value, setSelectedValue] = React.useState('female');
@@ -159,7 +159,6 @@ function SessionData(props) {
                   <TableRow>
                     <StyledTableCell>Nome</StyledTableCell>
                     <StyledTableCell align="right">Sessão</StyledTableCell>
-                    <StyledTableCell align="right">Prontuário</StyledTableCell>
                     <StyledTableCell align="right">Idade</StyledTableCell>
                   </TableRow>
                 </TableHead>
@@ -170,7 +169,6 @@ function SessionData(props) {
                         {row.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">{row.session}</StyledTableCell>
-                      <StyledTableCell align="right">{row.prontuary}</StyledTableCell>
                       <StyledTableCell align="right">{row.age}</StyledTableCell>
                     </StyledTableRow>
                   ))}
@@ -182,7 +180,7 @@ function SessionData(props) {
         </div>
       </form>
       <Container className={clsx(classes.root, classes.position)} maxWidth="md">
-        {/* <Button className={classes.button} variant="contained" color="secondary" size="small">
+        {/* <Button className={classes.button} variant="contained" color="default" size="small">
           CANCELAR
         </Button> */}
         <Button className={classes.button} variant="contained" color="primary" size="small" href="/">
@@ -193,4 +191,4 @@ function SessionData(props) {
   );
 }
 
-export default SessionData;                                                           
+export default PatientsList;

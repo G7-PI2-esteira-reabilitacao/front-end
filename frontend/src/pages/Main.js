@@ -39,7 +39,7 @@ function Main() {
         <Grid spacing={4} container>
           <Grid item lg={6} md={6}  >
             <Button className={classes.button} 
-              href="session" 
+              href="goniometry" 
               variant="contained" 
               color="primary" 
               size="large">
@@ -57,7 +57,7 @@ function Main() {
           </Grid>
           <Grid item lg={6} md={6}  >
             <Button className={classes.button} 
-              href="dashboard" 
+              href="aftersession" 
               variant="contained" 
               color="primary" 
               size="large">
@@ -81,5 +81,3 @@ function Main() {
 }
 
 export default Main;
-
-
