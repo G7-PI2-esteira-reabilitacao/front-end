@@ -88,10 +88,9 @@ function SessionData() {
             <h2 className={classes.title} fontFamyli="">SESSÃO: 4</h2>
             <div  style={{display: 'inline'}}>
               <Typography sx={{ mb: 1.5 }} color="text.secondary" align="left">
-                Acompanhamento dos dados de desempenho de (nome) do dia 01/02/21. 
-                Para melhor acompanhamento da análise acesse: 
+              Para realizar medições dos movimentos nas gravações do treino, <b/>
                 <Link href="#" onClick={preventDefault}> 
-                  Link 
+                  clique aqui
                 </Link>
               </Typography>
             </div>
@@ -213,7 +212,7 @@ function SessionData() {
                         align="left"
                       />
                       <Typography variant="h4" component="div" align="right">
-                        12/8
+                        120/80
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.secondary" align="right">
                         mm/Hg
@@ -240,7 +239,7 @@ function SessionData() {
                 <Grid item xs={4}>
                   <Card>
                     <CardContent>
-                      <Typography className={classes.titlebox} align="center" gutterBottom>
+                      <Typography style={{backgroundColor: "red"}} className={classes.titlebox} align="center" gutterBottom>
                         SATURAÇÃO
                       </Typography>
                       <img

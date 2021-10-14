@@ -1,4 +1,4 @@
-import { makeStyles, Toolbar, Container, Box, Card, CardContent, Typography, Switch, FormControlLabel } from '@material-ui/core';
+import { makeStyles, Toolbar, Container, Box, Card, CardContent, Typography, Switch, FormControlLabel, Link } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import {
   LineChart,
@@ -55,9 +55,9 @@ const useStyles = makeStyles((theme) => ({
     background: '#17809F'
   },
   switch: {
-    left: '25%',  
+    left: '25%',
   },
-  
+
 }));
 
 const data = [
@@ -74,7 +74,6 @@ const data = [
     cadencia: 144,
     batimentos: 94,
     velocidade: 0.3,
-
   },
   {
     name: 'Page C',
@@ -82,7 +81,6 @@ const data = [
     cadencia: 150,
     batimentos: 96,
     velocidade: 0.4,
-
   },
   {
     name: 'Page D',
@@ -90,7 +88,6 @@ const data = [
     cadencia: 148,
     batimentos: 102,
     velocidade: 0.5,
-
   },
   {
     name: 'Page E',
@@ -98,7 +95,6 @@ const data = [
     cadencia: 157,
     batimentos: 108,
     velocidade: 0.6,
-
   },
   {
     name: 'Page F',
@@ -106,7 +102,6 @@ const data = [
     cadencia: 155,
     batimentos: 110,
     velocidade: 0.7,
-
   },
   {
     name: 'Page G',
@@ -114,7 +109,6 @@ const data = [
     cadencia: 160,
     batimentos: 115,
     velocidade: 0.8,
-
   },
 ];
 
@@ -122,9 +116,12 @@ function AfterSession() {
   const classes = useStyles();
   const [type, setType] = useState([false, false, false]);
 
+  const preventDefault = (event) => event.preventDefault();
+
+
   useEffect(() => {
     setType([false, false, false]);
-  },[])
+  }, [])
 
   const handleChange = (opt) => {
     let obj = [...type];
@@ -137,8 +134,9 @@ function AfterSession() {
       <Toolbar />
       <Container className={classes.title} maxWidth="md">
         <Box display="flex">
+
           <Box display="flex" height='630px' width='20%' className={classes.description}>
-            <Box className={classes.desc}>
+            <Box style={{ marginTop: "5px" }} className={classes.desc}>
               <Card className={classes.cardbox}>
                 <CardContent>
                   <Typography className={classes.titlebox} align="center" gutterBottom>
@@ -179,6 +177,12 @@ function AfterSession() {
             </Box>
           </Box>
           <Box display="flex" className={classes.content}>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary" align="left">
+              Para realizar medições dos movimentos nas gravações do treino, <b />
+              <Link href="#" onClick={preventDefault}>
+                clique aqui
+              </Link>
+            </Typography>
             <Box className={classes.test}>
 
               <ResponsiveContainer width="100%" height={200}>
@@ -197,37 +201,37 @@ function AfterSession() {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis >
-                  <Label value="Sessões" offset={0} position="insideBottom" />
+                    <Label value="Sessões" offset={0} position="insideBottom" />
                   </XAxis>
-                  <YAxis label={{ value: 'acertos', angle: -90, position: 'insideLeft' }}/>
+                  <YAxis label={{ value: 'acertos', angle: -90, position: 'insideLeft' }} />
                   <Tooltip />
                   <Line dataKey="acertos" stroke="#8884d8" fill="#8884d8" />
                 </LineChart>) :
-                (<BarChart
-                  width={500}
-                  height={200}
-                  data={data}
-                  syncId="anyId"
-                  margin={{
-                    top: 10,
-                    right: 30,
-                    left: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis >
-                  <Label value="Sessões" offset={0} position="insideBottom" />
-                  </XAxis>
-                  <YAxis label={{ value: 'acertos', angle: -90, position: 'insideLeft' }}/>
-                  <Tooltip />
-                  <Bar maxBarSize={40} dataKey="acertos" fill="#8884d8" />
-                </BarChart>)}
+                  (<BarChart
+                    width={500}
+                    height={200}
+                    data={data}
+                    syncId="anyId"
+                    margin={{
+                      top: 10,
+                      right: 30,
+                      left: 0,
+                      bottom: 0,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis >
+                      <Label value="Sessões" offset={0} position="insideBottom" />
+                    </XAxis>
+                    <YAxis label={{ value: 'acertos', angle: -90, position: 'insideLeft' }} />
+                    <Tooltip />
+                    <Bar maxBarSize={40} dataKey="acertos" fill="#8884d8" />
+                  </BarChart>)}
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>
               <ResponsiveContainer width="100%" height={200}>
-              {type[1] ? (<LineChart
+                {type[1] ? (<LineChart
                   width={500}
                   height={200}
                   data={data}
@@ -241,37 +245,37 @@ function AfterSession() {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis >
-                  <Label value="Sessões" offset={0} position="insideBottom" />
+                    <Label value="Sessões" offset={0} position="insideBottom" />
                   </XAxis>
-                  <YAxis label={{ value: 'cadencia', angle: -90, position: 'insideLeft' }}/>
+                  <YAxis label={{ value: 'cadencia', angle: -90, position: 'insideLeft' }} />
                   <Tooltip />
                   <Line type="monotone" dataKey="cadencia" stroke="#82ca9d" fill="#82ca9d" />
                 </LineChart>) :
-                (<BarChart
-                  width={500}
-                  height={200}
-                  data={data}
-                  syncId="anyId"
-                  margin={{
-                    top: 10,
-                    right: 30,
-                    left: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis >
-                  <Label value="Sessões" offset={0} position="insideBottom" />
-                  </XAxis>
-                  <YAxis label={{ value: 'cadencia', angle: -90, position: 'insideLeft' }}/>
-                  <Tooltip />
-                  <Bar maxBarSize={40} type="monotone" dataKey="cadencia" fill="#82ca9d" />
-                </BarChart>)}
+                  (<BarChart
+                    width={500}
+                    height={200}
+                    data={data}
+                    syncId="anyId"
+                    margin={{
+                      top: 10,
+                      right: 30,
+                      left: 0,
+                      bottom: 0,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis >
+                      <Label value="Sessões" offset={0} position="insideBottom" />
+                    </XAxis>
+                    <YAxis label={{ value: 'cadencia', angle: -90, position: 'insideLeft' }} />
+                    <Tooltip />
+                    <Bar maxBarSize={40} type="monotone" dataKey="cadencia" fill="#82ca9d" />
+                  </BarChart>)}
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>
               <ResponsiveContainer width="100%" height={200}>
-              {type[2] ? (<LineChart
+                {type[2] ? (<LineChart
                   width={500}
                   height={200}
                   data={data}
@@ -285,32 +289,33 @@ function AfterSession() {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="velocidade" >
-                  <Label value="velocidade" offset={0} position="insideBottom" />
+                    <Label value="velocidade" offset={0} position="insideBottom" />
                   </XAxis >
-                  <YAxis dataKey="batimentos" label={{ value: 'bpm', angle: -90, position: 'insideLeft' }}/>
+                  <YAxis dataKey="batimentos" label={{ value: 'bpm', angle: -90, position: 'insideLeft' }} />
                   <Tooltip />
-                  <Line type="monotone" dataKey="batimentos" stroke="#820c00" fill="#820c00"  />
-                </LineChart>) :
-                (<BarChart
-                  width={500}
-                  height={200}
-                  data={data}
-                  syncId="anyId"
-                  margin={{
-                    top: 10,
-                    right: 30,
-                    left: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="velocidade" >
-                  <Label value="velocidade" offset={0} position="insideBottom" />
-                  </XAxis >
-                  <YAxis dataKey="batimentos" label={{ value: 'bpm', angle: -90, position: 'insideLeft' }}/>
-                  <Tooltip />
-                  <Bar maxBarSize={40} type="monotone" dataKey="batimentos" fill="#820c00" />
-                </BarChart>)}
+                  <Line type="monotone" dataKey="batimentos" stroke="#820c00" fill="#820c00" />
+                 <Line type="monotone" dataKey="batimentos" stroke="#820c00" fill="#820c00" />
+                </LineChart>) : (<BarChart
+                    width={500}
+                    height={200}
+                    data={data}
+                    syncId="anyId"
+                    margin={{
+                      top: 10,
+                      right: 30,
+                      left: 0,
+                      bottom: 0,
+                    }}
+                  >
+
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="velocidade" >
+                      <Label value="velocidade" offset={0} position="insideBottom" />
+                    </XAxis >
+                    <YAxis dataKey="batimentos" label={{ value: 'bpm', angle: -90, position: 'insideLeft' }} />
+                    <Tooltip />
+                    <Bar maxBarSize={40} type="monotone" dataKey="batimentos" fill="#820c00" />
+                  </BarChart>)}
               </ResponsiveContainer>
             </Box>
             <Box className={classes.test}>

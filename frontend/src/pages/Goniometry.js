@@ -19,14 +19,14 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(2),
   },
-  title:{
+  title: {
     marginTop: '35px',
     textAlign: 'center',
     color: '#fff',
-    background: '#17809F'    
+    background: '#17809F'
   },
   button: {
-    width: theme.spacing(20), 
+    width: theme.spacing(20),
     marginRight: '20px',
     marginBottom: '30px',
     position: 'relative',
@@ -40,7 +40,7 @@ function Goniometry() {
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
-        <Toolbar/>
+        <Toolbar />
         <div>
           <Container maxWidth="md">
             <h1 className={classes.title} fontFamyli="">DADOS DA SESSÃO</h1>
@@ -54,12 +54,12 @@ function Goniometry() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                style ={{width: '98%'}}
+                style={{ width: '98%' }}
                 variant="filled"
               />
             </div>
             <div>
-              <TextField 
+              <TextField
                 required
                 id="filled-full-width"
                 label="Sistólica"
@@ -68,7 +68,7 @@ function Goniometry() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                style ={{width: '48%'}}
+                style={{ width: '48%' }}
                 variant="filled"
               />
               <TextField
@@ -80,7 +80,7 @@ function Goniometry() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                style ={{width: '48%'}}
+                style={{ width: '48%' }}
                 variant="filled"
               />
             </div>
@@ -94,7 +94,7 @@ function Goniometry() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                style ={{width: '98%'}}
+                style={{ width: '98%' }}
                 variant="filled"
               />
             </div>
@@ -103,25 +103,15 @@ function Goniometry() {
               <TextField
                 required
                 id="filled-required"
-                label="Flexão de quadril"
+                label="Flexão de quadril esquerdo"
                 className={clsx(classes.margin, classes.textField)}
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
                 variant="filled"
               />
-              <TextField
-                required
-                id="filled-required"
-                label="Extensão de quadril"
-                className={clsx(classes.margin, classes.textField)}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
-                }}
-                style ={{width: '31%'}}
-                variant="filled"
-              />
+
               <TextField
                 required
                 id="filled-required"
@@ -130,40 +120,7 @@ function Goniometry() {
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Flexão joelho direito"
-                className={clsx(classes.margin, classes.textField)}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
-                }}
-                style ={{width: '31%'}}
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Extensão joelho esquerdo"
-                className={clsx(classes.margin, classes.textField)}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
-                }}
-                style ={{width: '31%'}}
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Extensão joelho direito"
-                className={clsx(classes.margin, classes.textField)}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
-                }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
                 variant="filled"
               />
               <TextField
@@ -174,7 +131,30 @@ function Goniometry() {
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Flexão de quadril direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+
+              <TextField
+                required
+                id="filled-required"
+                label="Flexão joelho direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
                 variant="filled"
               />
               <TextField
@@ -185,7 +165,32 @@ function Goniometry() {
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão de quadril esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+
+
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão joelho esquerdo"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
                 variant="filled"
               />
               <TextField
@@ -196,7 +201,31 @@ function Goniometry() {
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão de quadril direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
+                variant="filled"
+              />
+
+
+              <TextField
+                required
+                id="filled-required"
+                label="Extensão joelho direito"
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">cm</InputAdornment>,
+                }}
+                style={{ width: '31%' }}
                 variant="filled"
               />
               <TextField
@@ -207,17 +236,17 @@ function Goniometry() {
                 InputProps={{
                   startAdornment: <InputAdornment position="start">cm</InputAdornment>,
                 }}
-                style ={{width: '31%'}}
+                style={{ width: '31%' }}
                 variant="filled"
               />
             </div>
-              <Button className={classes.button} 
-              href="/" 
-              variant="contained" 
-              color="default" 
+            <Button className={classes.button}
+              href="/"
+              variant="contained"
+              color="default"
               size="small"
-              >
-                CANCELAR
+            >
+              CANCELAR
             </Button>
             <Button className={classes.button} variant="contained" color="primary" size="small" href="sessiondata">
               INICIAR

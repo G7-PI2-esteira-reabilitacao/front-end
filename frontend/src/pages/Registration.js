@@ -188,7 +188,7 @@ function Registration() {
               <TextField
                 required
                 id="filled-required"
-                label="Prontuário"
+                label="Historico clinico"
                 type="text"
                 margin="normal"
                 InputLabelProps={{
